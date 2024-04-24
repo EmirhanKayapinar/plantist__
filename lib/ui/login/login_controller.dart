@@ -7,7 +7,7 @@ import 'package:plantist/routes/app_pages.dart';
 class LoginController extends GetxController {
   RxBool isEmailValid = false.obs;
   RxBool isPasswordValid = false.obs;
-  RxBool showPassword = false.obs;
+  RxBool showPassword = true.obs;
   String password = "";
   String email = "";
   UserCredential? userCredential;
@@ -25,6 +25,8 @@ class LoginController extends GetxController {
       debugPrint("Kayıt başarılı: ${userCredential.user!.email}");
     } on FirebaseAuthException catch (e) {
       debugPrint("Kayıt hatası: $e");
+      Get.snackbar("", "Register error: $e");
+      EasyLoading.dismiss();
     }
   }
 
@@ -42,6 +44,8 @@ class LoginController extends GetxController {
       debugPrint("Giriş başarılı: ${userCredential?.user!.email}");
     } on FirebaseAuthException catch (e) {
       debugPrint("Giriş hatası: $e");
+      Get.snackbar("", "Incorrect email or password");
+      EasyLoading.dismiss();
     }
   }
 }
