@@ -78,12 +78,12 @@ class RegisterScreen extends StatelessWidget {
                     cursorColor: Colors.black,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email gerekli';
+                        return 'Email required';
                       }
 
                       if (!RegExp(r'\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b')
                           .hasMatch(value)) {
-                        return 'Geçerli bir mail adresi girin';
+                        return 'Please enter a valid email address';
                       }
                       return null;
                     },
@@ -107,13 +107,13 @@ class RegisterScreen extends StatelessWidget {
                       textAlignVertical: TextAlignVertical.center,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Şifre gerekli';
+                          return 'Password required';
                         }
                         if (value.length < 6) {
-                          return 'Şifre en az 6 karakter olmalıdır';
+                          return 'Password must be at least 6 characters';
                         }
                         if (!value.contains(RegExp(r'[A-Z]'))) {
-                          return 'Şifre en az bir büyük harf içermelidir';
+                          return 'Password must contain at least one uppercase letter';
                         }
                         return null;
                       },
